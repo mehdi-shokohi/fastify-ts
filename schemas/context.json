@@ -1,0 +1,30 @@
+{
+
+
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "name": {
+                  "type": "string"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "status": {
+                  "type": "boolean"
+              },
+              "version": {
+                  "type": "number"
+              },
+              "code": {
+                  "type": "integer"
+              }
+          },
+          "required": [
+              "code",
+              "name"
+
+          ],
+          "title": "Welcome3"
+
+}

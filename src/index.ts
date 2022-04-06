@@ -4,7 +4,7 @@ const controller_loader = require(__dirname+"/module/controller_loader")
 // Load env vars
 import loadConfig from './config/config'
 loadConfig()
-
+global.__basedir = __dirname+"/..";
 
 
  const startServer = async () => {
@@ -29,6 +29,7 @@ loadConfig()
   
   
     server.listen(process.env.API_PORT, (err, address): void => {
+      if (err) { console.log(err)}
       console.log(`Server listening at ${address}`)
   
     })
