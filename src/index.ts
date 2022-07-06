@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+
 const controllerLoader = require(__dirname + "/module/controller_loader")
 
 // Load env vars
@@ -18,7 +19,7 @@ const startServer = async () => {
     server.register(require('fastify-formbody'))
     server.register(require('fastify-cors'))
     server.register(require('fastify-helmet'))
-
+   await  server.register(require('./module/redis_helper'))
     // API routers
     controllerLoader(__dirname + '/route', server)
 

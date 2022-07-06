@@ -5,6 +5,7 @@ import { IContextRequest } from './interfaces'
 
 
 export const register = async (request: IContextRequest, reply: FastifyReply) => {
+
    return {data:request.body}
 
 

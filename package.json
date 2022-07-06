@@ -1,5 +1,5 @@
 {
-  "name": "fastify-ts-pi",
+  "name": "fastify-ts-api",
   "version": "0.0.1",
   "description": "fastify sample api",
   "main": "src/index.ts",
@@ -27,6 +27,8 @@
     "fastify-cors": "^6.0.3",
     "fastify-file-upload": "^3.0.1",
     "fastify-formbody": "^5.2.0",
-    "fastify-helmet": "^7.0.1"
+    "fastify-helmet": "^7.0.1",
+    "fastify-plugin": "^3.0.1",
+    "node-async-redis": "^1.0.1"
   }
 }
