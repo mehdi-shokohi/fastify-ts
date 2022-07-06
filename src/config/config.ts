@@ -1,11 +1,7 @@
 import path from 'path'
-
-
-
-
-
+import conf from 'dotenv'
 export default function loadConfig(): void {
-  const result = require('dotenv').config({
+  const c = conf.config({
     path: path.join(
       __dirname,
       `../../${
@@ -14,15 +10,15 @@ export default function loadConfig(): void {
     ),
   })
 
-  if (result.error) {
-    const result = require('dotenv').config({
+  if (c.error) {
+    const c = conf.config({
       path: path.join(
         __dirname,
         `../../.env`,
       ),
     })
-    if (result.error) {
-    throw new Error(result.error)
+    if (c.error) {
+    throw new Error(c.error.message)
     }
   }
 
