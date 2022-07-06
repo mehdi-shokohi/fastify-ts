@@ -1,11 +1,11 @@
 {
-  "name": "zap-server-api",
+  "name": "fastify-ts-pi",
   "version": "0.0.1",
-  "description": "zap access api",
+  "description": "fastify sample api",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "cp .env package.json ./dist && tsc",
+    "build": "mkdir -p ./dist && cp .env package.json ./dist && tsc",
     "json2ts": "json2ts -i schemas -o src/types",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix"

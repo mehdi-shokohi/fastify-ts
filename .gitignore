@@ -60,7 +60,7 @@ profile*
 dist
 build/
 .husky
-
+temp
 .development.env
 .stage.env
 .production.env

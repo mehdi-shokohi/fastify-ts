@@ -4,7 +4,6 @@ const controllerLoader = require(__dirname + "/module/controller_loader")
 // Load env vars
 import loadConfig from './config/config'
 loadConfig()
-
 const startServer = async () => {
 
   try {
