@@ -2,10 +2,10 @@
   "name": "fastify-ts-api",
   "version": "0.0.1",
   "description": "fastify sample api",
-  "main": "src/index.ts",
+  "main": "dist/src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "mkdir -p ./dist && cp .env package.json ./dist && tsc",
+    "build": "mkdir -p ./dist && tsc && cp .env ./dist && json2ts -i dist/schemas -o dist/src/types",
     "json2ts": "json2ts -i schemas -o src/types",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix"

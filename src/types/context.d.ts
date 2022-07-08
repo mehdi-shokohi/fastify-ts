@@ -7,8 +7,8 @@
 
 export interface Context {
   name: string;
-  description: string;
-  status: boolean;
-  version: number;
+  description?: string;
+  status?: boolean;
+  version?: number;
   code: number;
 }

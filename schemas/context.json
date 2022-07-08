@@ -1,4 +1,5 @@
 {
+    "title": "Context",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -21,6 +22,5 @@
     "required": [
         "code",
         "name"
-    ],
-    "title": "Welcome3"
+    ]
 }
