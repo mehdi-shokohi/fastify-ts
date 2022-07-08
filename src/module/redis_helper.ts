@@ -16,10 +16,10 @@ function plugin(fastify, opts, next) {
         redisClient = createRedisClient({ host: config.REDIS_HOST, password: config.REDIS_PASSWORD, port: config.REDIS_PORT });
 
     redisClient.on("error", (err) => {
-        fastify.error('Error on conecting to redis', err);
+        fastify.logger.error('Error on conecting to redis', err);
     });
     redisClient.on("connect", () => {
-        // console.log("redis-new-connection")
+        fastify.logger.info('Connected to redis')
     });
 
     redisClient.get = async function (key) {
@@ -63,5 +63,11 @@ function plugin(fastify, opts, next) {
 
 module.exports = fp(plugin, {
     fastify: '3.x',
-    name: 'redis-async-helper'
-})
+    name: 'redis-async-helper',
+    decorators: {
+        fastify: ['logger'],
+    },
+    dependencies: ['logger',]
+},
+
+)

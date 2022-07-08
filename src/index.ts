@@ -19,13 +19,18 @@ const startServer = async () => {
     server.register(require('fastify-formbody'))
     server.register(require('fastify-cors'))
     server.register(require('fastify-helmet'))
-   await  server.register(require('./module/redis_helper'))
+
+    //Load Plugins
+    await  server.register(require('./module/logger'))
+    await  server.register(require('./module/redis_helper'))
     // API routers
     controllerLoader(__dirname + '/route', server)
 
     server.listen(process.env.API_PORT, process.env.API_HOST, (err, address): void => {
-      if (err) { console.log(err) }
-      console.log(`Server listening at ${address}`)
+      if (err) { 
+        server['logger'].error(err)
+      }
+      server['logger'].info(`Server listening at ${address}`)
     })
   } catch (err) {
     console.log(err)
