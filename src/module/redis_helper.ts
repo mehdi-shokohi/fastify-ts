@@ -10,12 +10,7 @@ function plugin(fastify, opts, next) {
     let redisClient;
     const node_prefix = config.REDIS_PREFIX ? config.REDIS_PREFIX + "_" : ""
 
-    if (process.env.REDIS_PASSWORD === '')  //   new CopyWebpackPlugin({patterns:[
-        //     {
-        //         from: './package.json',
-        //         to: './package.json'
-        //     }
-        // ]}),
+    if (process.env.REDIS_PASSWORD === '')  
         redisClient = createRedisClient({ host: config.REDIS_HOST, port: config.REDIS_PORT });
     else
         redisClient = createRedisClient({ host: config.REDIS_HOST, password: config.REDIS_PASSWORD, port: config.REDIS_PORT });

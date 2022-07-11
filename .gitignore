@@ -61,7 +61,7 @@ dist
 build/
 .husky
 temp
-.development.env
+.env.development
 .stage.env
-.production.env
+
 exeBundle/*

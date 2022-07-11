@@ -1,6 +1,4 @@
 import Fastify from 'fastify'
-import * as path from 'path'
-// const controllerLoader = require(path.join(__dirname, "/module/controller_loader"))
 import fastifyFormbody from '@fastify/formbody'
 import fastifyCors from '@fastify/cors'
 import fastifyHelmet from '@fastify/helmet'
@@ -9,6 +7,7 @@ import fastifyHelmet from '@fastify/helmet'
 // Load env vars
 import loadConfig from './config/config'
 loadConfig()
+import registerRoutes from './route'
 const startServer = async () => {
 
   try {
@@ -27,12 +26,9 @@ const startServer = async () => {
     //Load Plugins
     await  server.register(require('./module/logger'))
     await  server.register(require('./module/redis_helper'))
+    
     // API routers
-    // controllerLoader(path.join(__dirname,'/route'), server)
-    const contextRoute = require('./route/context')
-    const testRoute = require('./route/test')
-    server.register(contextRoute,{ prefix: `/context` })
-    server.register(testRoute,{ prefix: `/test` })
+    registerRoutes(server)
 
     const { API_HOST = "localhost", API_PORT = 8080 } = process.env
 

@@ -7,16 +7,14 @@
   "scripts": {
     "start:dev": "webpack --mode=development --node-env=development",
     "run:dev": "NODE_ENV=development node dist/main.js",
-    "start": "ts-loader ./src/index.ts",
-    "build": "webpack --mode=production --node-env=production ",
+    "start:ts": "ts-node ./src/index.ts",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
     "execBundle" :"pkg dist/main.js --out-path=exeBundle",
     "json2ts": "json2ts -i schemas -o src/types",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
