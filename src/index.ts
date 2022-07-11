@@ -1,6 +1,10 @@
 import Fastify from 'fastify'
+import * as path from 'path'
+// const controllerLoader = require(path.join(__dirname, "/module/controller_loader"))
+import fastifyFormbody from '@fastify/formbody'
+import fastifyCors from '@fastify/cors'
+import fastifyHelmet from '@fastify/helmet'
 
-const controllerLoader = require(__dirname + "/module/controller_loader")
 
 // Load env vars
 import loadConfig from './config/config'
@@ -16,17 +20,23 @@ const startServer = async () => {
     // check user router for how to use middleware function into api request
 
     // third party packages
-    server.register(require('fastify-formbody'))
-    server.register(require('fastify-cors'))
-    server.register(require('fastify-helmet'))
+    server.register(fastifyFormbody)
+    server.register(fastifyCors)
+    server.register(fastifyHelmet)
 
     //Load Plugins
     await  server.register(require('./module/logger'))
     await  server.register(require('./module/redis_helper'))
     // API routers
-    controllerLoader(__dirname + '/route', server)
+    // controllerLoader(path.join(__dirname,'/route'), server)
+    const contextRoute = require('./route/context')
+    const testRoute = require('./route/test')
+    server.register(contextRoute,{ prefix: `/context` })
+    server.register(testRoute,{ prefix: `/test` })
 
-    server.listen(process.env.API_PORT, process.env.API_HOST, (err, address): void => {
+    const { API_HOST = "localhost", API_PORT = 8080 } = process.env
+
+    server.listen({host:API_HOST,port: Number(API_PORT)}, (err, address): void => {
       if (err) { 
         server['logger'].error(err)
       }

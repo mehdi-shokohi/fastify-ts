@@ -1,3 +1,15 @@
-- `json` to Schema Generator
+# 🚀 Welcome to your new awesome project!
 
-https://www.liquid-technologies.com/online-json-to-schema-converter
+This project has been created using **webpack-cli**, you can now run
+
+```
+npm run build
+```
+
+or
+
+```
+yarn build
+```
+
+to bundle your application

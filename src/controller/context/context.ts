@@ -14,6 +14,6 @@ export const register = async (request: IContextRequest, reply: FastifyReply) =>
 }
 
 export const getContextData = async (request: FastifyRequest, reply: FastifyReply)=>{
-return {data:"context code is : 12"}
+return {data:"context code is : 333312"}
 
 }

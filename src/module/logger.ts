@@ -19,6 +19,6 @@ fastify.decorate('logger', logger);
 next()
 }
 module.exports = fp(plugin, {
-    fastify: '3.x',
+    fastify: '4.x',
     name: 'logger',
 })
