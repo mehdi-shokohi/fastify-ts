@@ -10,7 +10,7 @@
     "start:ts": "ts-node ./src/index.ts",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
-    "execBundle" :"pkg dist/main.js --out-path=exeBundle",
+    "execBundle" :"pkg dist/main.js --out-path=execBundle && cp .env execBundle/",
     "json2ts": "json2ts -i schemas -o src/types",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",

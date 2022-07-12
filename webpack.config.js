@@ -33,6 +33,9 @@ const config = {
       }
   ]}),
   new WebpackShellPluginNext({
+    onBuildStart:{
+      scripts: ['echo "make route ... "','node precompile.js $(pwd)/src/route']
+  },
     onBuildEnd:{
       scripts: ['echo "Starting development server..."','npm run run:dev']
   }}),

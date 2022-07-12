@@ -64,4 +64,4 @@ temp
 .env.development
 .stage.env
 
-exeBundle/*
+execBundle/*
