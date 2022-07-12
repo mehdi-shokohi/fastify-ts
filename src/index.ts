@@ -8,6 +8,7 @@ import fastifyHelmet from '@fastify/helmet'
 import loadConfig from './config/config'
 loadConfig()
 import registerRoutes from './route'
+import pluginsRegister from './module'
 const startServer = async () => {
 
   try {
@@ -24,8 +25,7 @@ const startServer = async () => {
     server.register(fastifyHelmet)
 
     //Load Plugins
-    await  server.register(require('./module/logger'))
-    await  server.register(require('./module/redis_helper'))
+    await pluginsRegister(server)
     
     // API routers
     registerRoutes(server)
@@ -34,9 +34,9 @@ const startServer = async () => {
 
     server.listen({host:API_HOST,port: Number(API_PORT)}, (err, address): void => {
       if (err) { 
-        server['logger'].error(err)
+        server.logger.error(err)
       }
-      server['logger'].info(`Server listening at ${address}`)
+      server.logger.info(`Server listening at ${address}`)
     })
   } catch (err) {
     console.log(err)
